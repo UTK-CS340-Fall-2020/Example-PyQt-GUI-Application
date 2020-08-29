@@ -12,7 +12,7 @@ from PyQt5.QtWidgets import QApplication
 def main():
     # declare an instance of the application
     app_example = QApplication(sys.argv)
-
+    
     # create an instance of the GUI_Example class and display the main window
     main_window = App_Window()
     main_window.show()
