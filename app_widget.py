@@ -24,7 +24,7 @@ from PyQt5.QtWidgets import QLCDNumber
 
 # This class holds our main widget that will contain all the other parts of the GUI
 class App_Widget(QWidget):
-     def __init__(self):
+    def __init__(self):
         super().__init__()
         
         # lets add some style to the widget
@@ -82,6 +82,8 @@ class App_Widget(QWidget):
         self.slider_bar4 = QSlider()
         self.slider_bar4.setValue(20)
         self.slider_bar4.setOrientation(Qt.Horizontal)
+        # connect the last slider to a function when adjusted
+        self.slider_bar4.valueChanged.connect(self.updateLCD)
         self.slider_layout.addWidget(self.slider_bar1)
         self.slider_layout.addSpacing(10)
         self.slider_layout.addWidget(self.slider_bar2)
@@ -103,3 +105,8 @@ class App_Widget(QWidget):
 
         # now that everything is added to the central_layout we set it for our main widget object
         self.setLayout(self.central_layout)
+
+    # function to connect the lcd display to the slider
+    def updateLCD(self):
+        # set the lcd to display the slider value
+        self.lcd_num.display(self.slider_bar4.value())
