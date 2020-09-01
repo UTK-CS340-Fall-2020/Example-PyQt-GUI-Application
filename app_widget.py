@@ -89,8 +89,9 @@ class App_Widget(QWidget):
         self.slider_layout.addWidget(self.slider_bar3)
         self.slider_layout.addSpacing(10)
         # put an lcd number with this slider
+        # that will eventually be connected to display the slider value in the lcd 
         self.lcd_num = QLCDNumber()
-        self.lcd_num.value = 12
+        self.lcd_num.display(24)
         self.slider_layout.addWidget(self.lcd_num)
         self.slider_layout.addWidget(self.slider_bar4)
         self.central_layout.addLayout(self.slider_layout)
