@@ -43,7 +43,9 @@ class App_Widget(QWidget):
         self.label = QLabel('Select One: ')
         # you can create radio buttons
         self.radio_button1 = QRadioButton('Red Pill')
+        self.radio_button1.toggled.connect(self.redPill)
         self.radio_button2 = QRadioButton('Blue Pill')
+        self.radio_button2.toggled.connect(self.bluePill)
         # too keep these close togther you can put them in their own layout
         self.rad_layout = QHBoxLayout()
         self.rad_layout.addWidget(self.label)
@@ -105,6 +107,14 @@ class App_Widget(QWidget):
 
         # now that everything is added to the central_layout we set it for our main widget object
         self.setLayout(self.central_layout)
+
+    def redPill(self):
+        self.radio_button1.setStyleSheet('background: red; color: white')
+        self.radio_button2.setStyleSheet('')
+
+    def bluePill(self):
+        self.radio_button2.setStyleSheet('background: blue; color: white')
+        self.radio_button1.setStyleSheet('')
 
     # function to connect the lcd display to the slider
     def updateLCD(self):
